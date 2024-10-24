@@ -33,9 +33,9 @@
               <tr>
                 <th scope="row">{{ $index + 1 }}</th>
                 <th scope="row">{{ product.ProductId }}</th>
-                <td>{{ getProductById(product.ProductId).ProductName }}</td>
+                <td>{{ getProductById(product.ProductId)?.ProductName }}</td>
                 <td>{{ product.Quantity }}</td>
-                <td>{{ getProductById(product.ProductId).ProductPrice }}</td>
+                <td>{{ getProductById(product.ProductId)?.ProductPrice }}</td>
               </tr>
               }
             </tbody>

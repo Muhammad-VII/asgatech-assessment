@@ -1,23 +1,35 @@
 <section class="my-5">
-  <div class="container">
+  <article class="container">
     <div class="row">
       @for (product of products; track $index) {
       <div class="col-md-3 pb-3">
-        <div class="card" style="width: 18rem">
-          <img [src]="product.ProductImg" class="card-img-top" alt="..." />
+        <article class="card" style="width: 18rem">
+          <img
+            [src]="product.ProductImg"
+            class="card-img-top"
+            alt="{{ product.ProductName }}"
+          />
           <div class="card-body">
-            <h5 class="card-title">{{ product.ProductName }}</h5>
+            <h1 class="card-title">{{ product.ProductName }}</h1>
             <p class="card-text">
               {{ product.ProductPrice | currency : "USD" }}
             </p>
-            <a (click)="buyProduct(product.ProductId)" class="btn btn-primary"
-              >Buy Product</a
+            @if (product.AvailablePieces < 5) {
+            <p class="text-danger">
+              Only {{ product.AvailablePieces }} available in stock
+            </p>
+            }
+            <button
+              (click)="buyProduct(product.ProductId)"
+              class="btn btn-primary mt-2"
+              [attr.aria-label]="'Buy' + ' ' + product.ProductName"
             >
+              Buy Product
+            </button>
           </div>
-        </div>
+        </article>
       </div>
       }
     </div>
-  </div>
-  
+  </article>
 </section>

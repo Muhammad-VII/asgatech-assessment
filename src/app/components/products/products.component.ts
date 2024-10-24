@@ -1,26 +1,37 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products/products.service';
 import { IProduct } from '../../interfaces/product';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, NgClass } from '@angular/common';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, NgClass],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
 })
-export class ProductsComponent {
-  #ProductsService = inject(ProductsService);
+export class ProductsComponent implements OnInit, OnDestroy {
   products: IProduct[] = [];
+  private destroy$ = new Subject<void>();
+
+  constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
-    this.#ProductsService.getProducts().subscribe((products: IProduct[]) => {
-      this.products = products;
-    });
+    this.productsService
+      .getProducts()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((products: IProduct[]) => {
+        this.products = products;
+      });
   }
 
-  buyProduct(id: string) {
-    console.log(id);
+  buyProduct(id: string): void {
+    console.log('Product ID:', id);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
