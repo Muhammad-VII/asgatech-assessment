@@ -13,8 +13,13 @@
             <p><strong>Method</strong>: {{ order.PaymentType }}</p>
             <p><strong>Ordered AT</strong>: {{ order.OrderDate | date }}</p>
           </div>
-          <div>
-            <p><strong>Total Price</strong>: {{ getTotalPrice(order.Products) }}</p>
+          <div class="d-flex justify-content-between">
+            <p>
+              <strong>Total Price</strong>: {{ getTotalPrice(order.Products) }}
+            </p>
+            <a [routerLink]="['/order-details', order.OrderId]"
+              >See order details</a
+            >
           </div>
           <hr />
           <p><strong>Products</strong>:</p>

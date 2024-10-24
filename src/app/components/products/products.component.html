@@ -2,8 +2,8 @@
   <article class="container">
     <div class="row">
       @for (product of products; track $index) {
-      <div class="col-md-3 pb-3">
-        <article class="card" style="width: 18rem">
+      <div class="col-md-3 p-2">
+        <article class="card h-100">
           <img
             [src]="product.ProductImg"
             class="card-img-top"
@@ -14,7 +14,7 @@
             <p class="card-text">
               {{ product.ProductPrice | currency : "USD" }}
             </p>
-            @if (product.AvailablePieces < 5) {
+            @if (product.AvailablePieces < 5 && product.AvailablePieces != 0) {
             <p class="text-danger">
               Only {{ product.AvailablePieces }} available in stock
             </p>
@@ -22,9 +22,10 @@
             <button
               (click)="buyProduct(product.ProductId)"
               class="btn btn-primary mt-2"
+              [disabled]="product.AvailablePieces <= 0"
               [attr.aria-label]="'Buy' + ' ' + product.ProductName"
             >
-              Buy Product
+              {{ product.AvailablePieces === 0 ? "Sold Out" : "Buy Now" }}
             </button>
           </div>
         </article>

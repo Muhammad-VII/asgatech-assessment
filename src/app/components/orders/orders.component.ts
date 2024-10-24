@@ -5,11 +5,12 @@ import { AsyncPipe, DatePipe } from '@angular/common';
 import { ProductsService } from '../../services/products/products.service';
 import { IProduct } from '../../interfaces/product';
 import { Subject, takeUntil } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-orders',
   standalone: true,
-  imports: [DatePipe, AsyncPipe],
+  imports: [DatePipe, AsyncPipe, RouterLink],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss',
 })
