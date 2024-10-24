@@ -5,8 +5,16 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 
 export const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' },
-  { path: 'products', component: ProductsComponent },
-  { path: 'orders', component: OrdersComponent },
+  {
+    path: 'products',
+    component: ProductsComponent,
+    data: { animation: 'ProductsPage' },
+  },
+  {
+    path: 'orders',
+    component: OrdersComponent,
+    data: { animation: 'OrdersPage' },
+  },
   { path: 'order-details/:id', component: OrderDetailsComponent },
   { path: '**', redirectTo: 'products' },
 ];

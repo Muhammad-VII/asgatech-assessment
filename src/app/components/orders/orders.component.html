@@ -13,6 +13,9 @@
             <p><strong>Method</strong>: {{ order.PaymentType }}</p>
             <p><strong>Ordered AT</strong>: {{ order.OrderDate | date }}</p>
           </div>
+          <div>
+            <p><strong>Total Price</strong>: {{ getTotalPrice(order.Products) }}</p>
+          </div>
           <hr />
           <p><strong>Products</strong>:</p>
           <table class="table table-striped">
@@ -20,15 +23,19 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Product ID</th>
+                <th scope="col">Product Name</th>
                 <th scope="col">Purchased Quantity</th>
+                <th scope="col">Purchased Price</th>
               </tr>
             </thead>
             <tbody>
               @for (product of order.Products; track $index) {
               <tr>
-                <th scope="row">1</th>
-                <td>{{ product.ProductId }}</td>
+                <th scope="row">{{ $index + 1 }}</th>
+                <th scope="row">{{ product.ProductId }}</th>
+                <td>{{ getProductById(product.ProductId).ProductName }}</td>
                 <td>{{ product.Quantity }}</td>
+                <td>{{ getProductById(product.ProductId).ProductPrice }}</td>
               </tr>
               }
             </tbody>

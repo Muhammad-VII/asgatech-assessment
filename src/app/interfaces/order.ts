@@ -1,4 +1,4 @@
-interface IOrdersProduct {
+export interface IOrdersProduct {
   ProductId: string;
   Quantity: number;
 }
