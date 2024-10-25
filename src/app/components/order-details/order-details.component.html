@@ -1,11 +1,68 @@
-<section>
-  <article class="container">
-    <h2>Order Details</h2>
-    <div class="d-flex justify-content-between">
-      <p><strong>Order ID</strong>: {{ order?.OrderId }}</p>
-      <p><strong>Ordered AT</strong>: {{ order?.OrderDate | date }}</p>
-      <p><strong>Payment Method</strong>: {{ order?.PaymentType }}</p>
-      <p><strong>User ID</strong>: {{ order?.UserId }}</p>
-    </div>
-  </article>
-</section>
+<main class="pt-3">
+  <div class="container">
+    <header>
+      <h2>Order Details</h2>
+      @let data = details$() | async;
+      <div class="d-flex justify-content-between">
+        <p><strong>Order ID</strong>: {{ data?.order?.OrderId }}</p>
+        <p><strong>Ordered AT</strong>: {{ data?.order?.OrderDate | date }}</p>
+        <p><strong>Payment Method</strong>: {{ data?.order?.PaymentType }}</p>
+      </div>
+    </header>
+
+    <hr />
+
+    <section aria-labelledby="user-info">
+      <h4 id="user-info">User Info</h4>
+      <div class="d-flex justify-content-between">
+        <address>
+          <p><strong>ID</strong>: {{ data?.user?.Id }}</p>
+          <p><strong>Full Name</strong>: {{ data?.user?.Name }}</p>
+          <p><strong>Address</strong>: {{ data?.user?.Address }}</p>
+        </address>
+
+        <div>
+          <p><strong>Email</strong>: {{ data?.user?.Email }}</p>
+          <p><strong>Phone Number</strong>: {{ data?.user?.Phone }}</p>
+          <p>
+            <strong>User Since</strong>: {{ data?.user?.RegisterDate | date }}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section aria-labelledby="order-products">
+      <h4 id="order-products">Order's Products</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product Title</th>
+            <th scope="col">Product Image</th>
+            <th scope="col">Purchased Quantity</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (product of data?.products; track $index) {
+          <tr>
+            <th scope="row">{{ $index + 1 }}</th>
+            <td>{{ product.ProductName }}</td>
+            <td>
+              <img
+                src="{{ product.ProductImg }}"
+                width="50px"
+                class="rounded"
+                alt="{{ product.ProductName }}"
+              />
+            </td>
+            <td>{{ product.quantity }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </section>
+  </div>
+</main>

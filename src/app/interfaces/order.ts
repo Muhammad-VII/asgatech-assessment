@@ -3,7 +3,7 @@ export interface IOrdersProduct {
   Quantity: number;
 }
 export interface IOrder {
-  OrderId: number;
+  OrderId: string;
   OrderDate: string;
   UserId: string;
   Products: IOrdersProduct[];
