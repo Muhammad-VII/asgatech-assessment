@@ -1,27 +1,27 @@
-# AsgatechAssessment
+# Angular E-Commerce Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+## Overview
 
-## Development server
+This is a small e-commerce application built with Angular. The application features three primary pages: **Products**, **Orders**, and **Order Details**. The main page is the **Products** page, where users can browse and select products. The application allows users to view their orders efficiently.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+- **Products Page**: Displays a list of available products with relevant details.
+- **Orders Page**: Shows a summary of the user's orders.
+- **Order Details Page**: Provides detailed information about a specific order.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tech Stack
 
-## Build
+- **Angular**: The framework used to build the application.
+- **TypeScript**: The programming language used for development.
+- **Bootstrap**: For responsive design and styling.
+- **RxJS**: For reactive programming and handling asynchronous data.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
 
-## Running unit tests
+To set up and run the application locally, follow these steps:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Muhammad-VII/asgatech-assessment.git
+   cd asgatech-assessment
